@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,7 +18,7 @@
                 count--;
                 document.getElementById("timer").innerHTML = count;
                 if(count <=0)
-                    window.location.href = "index.html";
+                    window.location.href = "inbox";
             }
             setInterval(counting,1000);
         </script>
@@ -31,6 +31,6 @@
                 ${g.name} <br/>
             </c:forEach>
         </div>
-        <div>Redirect to index.html after <span id="timer">3</span> seconds</div>
+        <div>Redirect to inbox after <span id="timer">3</span> seconds</div>
     </body>
 </html>

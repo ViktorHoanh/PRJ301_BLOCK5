@@ -5,6 +5,7 @@
 
 package controller;
 
+import dal.MessageDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -12,6 +13,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import model.Account;
 
 /**
  *
@@ -55,7 +58,7 @@ public class Message extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        request.getRequestDispatcher("inbox.jsp").forward(request, response);
     } 
 
     /** 
@@ -68,7 +71,11 @@ public class Message extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+                MessageDAO db = new MessageDAO();
+                Account receiver =(Account)request.getSession().getAttribute("account");
+                ArrayList<model.Message> messages = db.getMessages(receiver.getUsername());
+                request.setAttribute("message", messages);
+                request.getRequestDispatcher("inbox.jsp").forward(request, response);
     }
 
     /** 
