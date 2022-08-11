@@ -15,16 +15,7 @@ public class Message {
     private Account sender;
     private Account receiver;
     private String content;
-    private ArrayList<Message> message;
-
-    public ArrayList<Message> getMessage() {
-        return message;
-    }
-
-    public void setMessage(ArrayList<Message> message) {
-        this.message = message;
-    }
-
+ 
     public int getId() {
         return id;
     }

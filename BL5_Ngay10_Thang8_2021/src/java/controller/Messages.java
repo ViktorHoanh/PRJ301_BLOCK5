@@ -15,13 +15,14 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import model.Account;
+import model.Message;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name="Message", urlPatterns={"/inbox"})
-public class Message extends HttpServlet {
+@WebServlet(name="Messages", urlPatterns={"/inbox"})
+public class Messages extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -30,22 +31,21 @@ public class Message extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Message</title>");  
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Message at " + request.getContextPath () + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    } 
+//    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+//    throws ServletException, IOException {
+//        MessageDAO d = new MessageDAO();
+//        Account receiver =(Account)request.getSession().getAttribute("account");
+////        ArrayList<Message> messages = new ArrayList<Message>();
+////        messages = d.getMessages(receiver.getUsername());
+//        ArrayList<Message> messages = d.getMessages(receiver.getUsername());
+//        request.setAttribute("messeges", messages);
+//        request.getRequestDispatcher("inbox.jsp").forward(request, response);
+////         MessageDBContext db = new MessageDBContext();
+////        Account receiver =(Account)request.getSession().getAttribute("account");
+////        ArrayList<Message> messages = db.getMessages(receiver.getUsername());
+////        request.setAttribute("messages", messages);
+////        request.getRequestDispatcher("view/inbox.jsp").forward(request, response);
+//    } 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /** 
@@ -71,11 +71,12 @@ public class Message extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-                MessageDAO db = new MessageDAO();
-                Account receiver =(Account)request.getSession().getAttribute("account");
-                ArrayList<model.Message> messages = db.getMessages(receiver.getUsername());
-                request.setAttribute("message", messages);
-                request.getRequestDispatcher("inbox.jsp").forward(request, response);
+        MessageDAO d = new MessageDAO();
+        Account receiver =(Account)request.getSession().getAttribute("account");
+        ArrayList<Message> messages = new ArrayList<Message>();
+        messages = d.getMessages(receiver.getUsername());
+        request.setAttribute("messages", messages);
+        request.getRequestDispatcher("inbox.jsp").forward(request, response);
     }
 
     /** 

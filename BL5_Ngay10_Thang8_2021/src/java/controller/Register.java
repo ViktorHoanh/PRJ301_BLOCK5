@@ -6,6 +6,7 @@
 package controller;
 
 import dal.AccountDAO;
+import dal.GroupDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -13,14 +14,16 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import model.Account;
+import model.Group;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name="Login", urlPatterns={"/login"})
-public class Login extends HttpServlet {
+@WebServlet(name="Register", urlPatterns={"/register"})
+public class Register extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -37,10 +40,10 @@ public class Login extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Login</title>");  
+            out.println("<title>Servlet Register</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Login at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet Register at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -57,7 +60,10 @@ public class Login extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        request.getRequestDispatcher("login.jsp").forward(request, response);
+        GroupDAO d = new GroupDAO();
+        ArrayList<Group> groups = d.getGroups();
+        request.setAttribute("groups", groups);
+        request.getRequestDispatcher("register.jsp").forward(request, response);
     } 
 
     /** 
@@ -70,18 +76,48 @@ public class Login extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        AccountDAO dao = new AccountDAO();
-        Account account = dao.getAccount(username, password);
-          if (account!=null) {
-            account.setGroups(dao.getGroups(username));
-            request.getSession().setAttribute("acc", account);
-            request.setAttribute("acc", account);
-            request.getRequestDispatcher("welcome_login.jsp").forward(request, response);
-        } else {
-            response.getWriter().println("login fail!");
-        }
+//        String username = request.getParameter("username");
+//        String password = request.getParameter("password");
+//        String[] gids = request.getParameterValues("gid");
+//        ArrayList<Group> groups = new ArrayList<>();
+//        if(gids !=null)
+//        {
+//            for (String gid : gids) {
+//                int id = Integer.parseInt(gid);
+//                Group g = new Group();
+//                g.setId(id);
+//                groups.add(g);
+//            }
+//        }
+//        Account account = new Account();
+//        account.setUsername(username);
+//        account.setPassword(password);
+//        account.setGroups(groups);
+//        AccountDBContext db = new AccountDBContext();
+//        db.insert(account);
+//        response.getWriter().println("inserted successful!");
+//    }
+          String username = request.getParameter("username");
+          String password = request.getParameter("password");
+          String[] gids = request.getParameterValues("gid");
+          ArrayList<Group> group = new ArrayList<>();
+          if(gids != null){
+              for (String gid : gids){
+                  int id = Integer.parseInt(gid);
+                  Group g = new Group();
+                  g.setId(id);
+                  group.add(g);
+              }
+          }
+          Account account = new Account();
+          account.setUsername(username);
+          account.setPassword(password);
+          account.setGroups(group);
+          AccountDAO d = new AccountDAO();
+          d.insert(account);
+          response.getWriter().println("created successfull!");
+          
+          
     }
 
     /** 

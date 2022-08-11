@@ -59,5 +59,36 @@ public class AccountDAO extends DBContext {
         }
         return groups;
     }
+    
+        public void insert(Account account) {
+        try {
+            String sql = "INSERT INTO [Account]\n"
+                    + "           ([username]\n"
+                    + "           ,[password])\n"
+                    + "     VALUES\n"
+                    + "           (?\n"
+                    + "           ,?)";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setString(1, account.getUsername());
+            stm.setString(2, account.getPassword());
+            stm.executeUpdate();
+            for (Group group : account.getGroups()) {
+                String sql_account_group = "INSERT INTO [Account_Group]\n"
+                        + "           ([gid]\n"
+                        + "           ,[username])\n"
+                        + "     VALUES\n"
+                        + "           (?\n"
+                        + "           ,?)";
+                PreparedStatement stm_account_group = 
+                        connection.prepareStatement(sql_account_group);
+                stm_account_group.setInt(1, group.getId());
+                stm_account_group.setString(2, account.getUsername());
+                stm_account_group.executeUpdate();
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
 }
