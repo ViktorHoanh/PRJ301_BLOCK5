@@ -14,16 +14,6 @@ public class Message {
     private Account receiver;
     private String content;
 
-    public Message() {
-    }
-
-    public Message(int id, Account sender, Account receiver, String content) {
-        this.id = id;
-        this.sender = sender;
-        this.receiver = receiver;
-        this.content = content;
-    }
-
     public int getId() {
         return id;
     }

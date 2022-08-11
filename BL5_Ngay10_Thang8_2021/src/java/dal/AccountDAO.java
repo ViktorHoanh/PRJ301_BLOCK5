@@ -22,22 +22,23 @@ public class AccountDAO extends DBContext {
     public Account getAccount(String username, String password) {
         try {
             String sql = "SELECT * FROM Account\n"
-                + "WHERE username = '?' \n"
-                + "AND password = '?'";
-        PreparedStatement stm = connection.prepareStatement(sql);
-        stm.setString(1, username);
-        stm.setString(2, password);
-        ResultSet rs = stm.executeQuery();
-        if(rs.next()){
-            Account acc = new Account();
-            acc.setUsername(username);
-            return acc;
-        }
+                    + "WHERE username = ?\n"
+                    + "AND password = ?";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setString(1, username);
+            stm.setString(2, password);
+            ResultSet rs = stm.executeQuery();
+            if (rs.next()) {
+                Account acc = new Account();
+                acc.setUsername(username);
+                return acc;
+            }
         } catch (SQLException e) {
             Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, e);
         }
         return null;
     }
+
     public ArrayList<Group> getGroups(String username) {
         ArrayList<Group> groups = new ArrayList<>();
         try {
@@ -47,8 +48,7 @@ public class AccountDAO extends DBContext {
             PreparedStatement stm = connection.prepareStatement(sql);
             stm.setString(1, username);
             ResultSet rs = stm.executeQuery();
-            while(rs.next())
-            {
+            while (rs.next()) {
                 Group g = new Group();
                 g.setId(rs.getInt("gid"));
                 g.setName(rs.getString("name"));
@@ -59,6 +59,5 @@ public class AccountDAO extends DBContext {
         }
         return groups;
     }
-      
-    
+
 }

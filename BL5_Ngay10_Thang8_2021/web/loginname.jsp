@@ -12,6 +12,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <div>Hello ${sessionScope.account.username}</div>
+        <div>Hello ${sessionScope.acc.username}</div>
     </body>
 </html>

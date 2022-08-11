@@ -5,7 +5,6 @@
 
 package controller;
 
-import dal.AccountDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -13,14 +12,13 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import model.Account;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name="Login", urlPatterns={"/login"})
-public class Login extends HttpServlet {
+@WebServlet(name="Message", urlPatterns={"/inbox"})
+public class Message extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -37,10 +35,10 @@ public class Login extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Login</title>");  
+            out.println("<title>Servlet Message</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Login at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet Message at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -57,7 +55,7 @@ public class Login extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        request.getRequestDispatcher("login.jsp").forward(request, response);
+        processRequest(request, response);
     } 
 
     /** 
@@ -70,18 +68,7 @@ public class Login extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        AccountDAO dao = new AccountDAO();
-        Account account = dao.getAccount(username, password);
-          if (account!=null) {
-//            account.setGroups(dao.getGroups(username));
-//            request.getSession().setAttribute("acc", account);
-            request.setAttribute("acc", account);
-            request.getRequestDispatcher("welcome_login.jsp").forward(request, response);
-        } else {
-            response.getWriter().println("login fail!");
-        }
+        processRequest(request, response);
     }
 
     /** 
