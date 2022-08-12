@@ -7,8 +7,8 @@
 <!-- the Compile on Save feature is turned off for the project. -->
 <!-- You can turn off the Compile on Save (or Deploy on Save) setting -->
 <!-- in the project's Project Properties dialog box.-->
-<project name="BL5_Ngay10_Thang8_2021" default="default" basedir=".">
-    <description>Builds, tests, and runs the project BL5_Ngay10_Thang8_2021.</description>
+<project name="BL5_Ngay12_Thang8_2022" default="default" basedir=".">
+    <description>Builds, tests, and runs the project BL5_Ngay12_Thang8_2022.</description>
     <import file="nbproject/build-impl.xml"/>
     <!--
 
