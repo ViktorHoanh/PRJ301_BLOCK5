@@ -113,7 +113,7 @@
         justify-content: center;
       }
 
-      .submit {
+/*      .submit {
         background-color: orchid;
         color: #000;
         text-decoration: none;
@@ -121,7 +121,7 @@
         font-size: 17px;
         border-radius: 10px;
         cursor: pointer;
-      }
+      }*/
 
       .time {
         display: flex;
@@ -151,6 +151,12 @@
         cursor: pointer;
         height: 40px;
       }
+      .heading {
+          background-color: #d4eeee;
+      }
+      .data {
+      background-color: #edeef1;
+      }
     </style>
 
     <h3>Công ty TNHH MTV</h3>
@@ -177,41 +183,31 @@
     </form>
 
     <table class="table">
-      <tr>
-        <th rowspan="3">TT</th>
-        <th rowspan="3">Họ và tên</th>
-        <th rowspan="3">Chức vụ</th>
-        <th rowspan="3">Lương cơ bản</th>
-        <th colspan="2" >Quy ra công</th>
-        <th colspan="3" >Tiền lương</th>
-        <th colspan="1">Tổng thu nhập</th>
+      <tr class="heading">
+        <th rowspan="2">TT</th>
+        <th rowspan="2">Họ và tên</th>
+        <th rowspan="2">Chức vụ</th>
+        <th rowspan="2">Lương cơ bản</th>
+        <th colspan="4" >Quy ra công</th>
+        <th rowspan="2" >Tiền lương</th>
+        <th rowspan="2">Tổng thu nhập</th>
+        <th rowspan="2">Phụ cấp</th>
         <th colspan="2">Các khoản khấu trừ</th>      
-        <th rowspan="3">Thực lĩnh</th>
-        <th rowspan="3">Ký nhận</th>
+        <th rowspan="2">Thực lĩnh</th>
+        <th rowspan="2">Ký nhận</th>
       </tr>
-      <tr>
+      <tr class="heading    ">
         <th>công ngày</th>
-        <th>công chủ nhật</th>
+        <th >công chủ nhật</th>
         <th>hưởng lương 100%</th>
         <th>hưởng lương 50%</th>
-        <th>hưởng phụ cấp</th>
-        <th></th>
         <th>BHXH</th>
         <th>Thuế</th>
       </tr>
       <tr>
-        <th class="content"><p></p></th>
-        <th class="content"><p></p></th>
-        <th class="content"><p></p></th>
-        <th class="content"><p></p></th>
-        <th class="content"><p></p></th>
-        <th class="content"><p></p></th>
-        <th class="content"><p></p></th>
-        <th class="content"><p></p></th>
-      </tr>
-      <tr>
         <th>I</th>
         <th>Bộ phận quản lý</th>
+        <td></td>
         <td></td>
         <td></td>
         <td ></td>
@@ -226,13 +222,14 @@
         <td></td>
 
       </tr>
-      <tr>
+      <tr class="data">
         <td>1</td>
         <td>Đào Văn Chỉnh</td>
         <td>Giám đốc</td>
         <td></td>
         <td></td>
-        <td ></td>
+        <td></td>
+        <td></td>
         <td></td>
         <td></td>
         <td></td>
@@ -242,10 +239,11 @@
         <td></td>
         <td></td>
       </tr>
-      <tr>
+      <tr class="data">
         <td>2</td>
         <td>Nguyễn Thị Năm</td>
         <td>Kế toán</td>
+        <td></td>
         <td></td>
         <td></td>
         <td></td>
@@ -273,8 +271,9 @@
         <td></td>
         <td></td>
         <td></td>
+        <td></td>
       </tr>
-      <tr>
+      <tr class="data">
         <td>1</td>
         <td>Đào Đình Cử</td>
         <td>Lái xe</td>
@@ -289,8 +288,9 @@
         <td></td>
         <td></td>
         <td></td>
+        <td></td>
       </tr>
-      <tr>
+      <tr class="data">
         <td>2</td>
         <td>Bùi Thị chi</td>
         <td>Bán hàng</td>
@@ -305,8 +305,9 @@
         <td></td>
         <td></td>
         <td></td>
+        <td></td>
       </tr>
-      <tr>
+      <tr class="data">
         <td>3</td>
         <td>Nguyễn Ngọc Quý</td>
         <td>Kinh doanh</td>
@@ -321,8 +322,9 @@
         <td></td>
         <td></td>
         <td></td>
+        <td></td>
       </tr>
-      <tr>
+      <tr class="data">
         <td>4</td>
         <td>Nguyễn Thị Hải Ánh</td>
         <td>Nhân viên</td>
@@ -337,11 +339,13 @@
         <td></td>
         <td></td>
         <td></td>
+        <td></td>
       </tr>
-      <tr>
+      <tr class="data">
         <td>5</td>
         <td>Nguyễn Thị Ngọc Ánh</td>
         <td>Nhân viên</td>
+        <td></td>
         <td></td>
         <td></td>
         <td></td>
@@ -358,13 +362,13 @@
 
     <div class="function">
       <div class="button--area">
-        <a href="Home.jsp" class="button">Trở về trang tính lương</a>
+        <a href="Home.jsp" class="button">Trở về trang chấm công</a>
         <a href="AbsentStatus.jsp" class="button">Đến trang chấm nghỉ</a>
       </div>
       <form class="signature--area">
         <div class="signature--form">
           <div class="signature--input">
-            <label for="">Người chấm công</label>
+            <label for="">Kế toán</label>
             <input type="text" placeholder="(Ký họ tên)" />
           </div>
           <div class="signature--input">
@@ -372,6 +376,7 @@
             <input type="text" placeholder="(Ký họ tên)" />
           </div>
         </div>
+      </form>
     </div>
     </body>
 </html>

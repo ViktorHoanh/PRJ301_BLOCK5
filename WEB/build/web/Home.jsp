@@ -585,6 +585,7 @@
             <input type="text" placeholder="(Ký họ tên)" />
           </div>
         </div>
+      </form>
     </div>
   </body>
 </html>

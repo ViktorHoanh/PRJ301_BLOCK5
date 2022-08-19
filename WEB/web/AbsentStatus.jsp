@@ -29,16 +29,21 @@
 
       h1 {
         text-align: center;
-        background-color: #FFFFCC;
+        background-color: #d4eeee;
         padding: 10px;
         margin: 10px;
         border: 3px doule #66CCFF;
       }
 
       table {
-        margin: 10px;
-        border-spacing: 0;
+        font-size: 200%;
+        margin-top: 80px;
+        margin-left: 200px;
+        border-spacing: 3;
+        border: double #d4eeee;
         margin-bottom: 50px;
+        align-content: center;
+        align-self: center;
       }
 
       th,
@@ -59,9 +64,20 @@
       }
 
       .button {
+        margin-left: 200px;
         text-decoration: none;
         color: #000;
-        background-color: #EEEEE;
+        background-color: #d4eeee;
+        padding: 20px;
+        border-radius: 10px;
+        font-size: 18px;
+        border: 3px solid #66CCFF;
+      }
+      .button1 {
+        margin-left: 25px;
+        text-decoration: none;
+        color: #000;
+        background-color: #d4eeee;
         padding: 20px;
         border-radius: 10px;
         font-size: 18px;
@@ -69,6 +85,9 @@
       }
 
       .button:hover {
+        background-color: #fff;
+      }
+      .button1:hover {
         background-color: #fff;
       }
 
@@ -151,7 +170,13 @@
         cursor: pointer;
         height: 40px;
       }
+      .data {
+      background-color: #edeef1;
+      }
     </style>
+    <h3>Công ty TNHH MTV</h3>
+
+    <h1>Bảng chấm nghỉ</h1>
         <table class="table">
   <tr>
     <th>EmployeeID</th>
@@ -161,15 +186,15 @@
     <th>Reason</th>
     <th>Response</th>
   </tr>
-  <tr>
+  <tr class="data">
     <td>2</td>
     <td>Nguyễn Thị Năm</td>
     <td>2022-02-01</td>
     <td>2022-02-05</td>
-    <td>Tết nguyên đán</td>
+    <td>Cúm nặng</td>
     <td>accepted</td>
   </tr>
-  <tr>
+  <tr class="data">
     <td>5</td>
     <td>Nguyễn Ngọc Quý</td>
     <td>2022-03-10</td>
@@ -177,11 +202,67 @@
     <td>Có việc riêng cần giải quyết </td>
     <td>denied</td>
   </tr>
+  <tr class="data">
+    <td>2</td>
+    <td>Nguyễn Thị Năm</td>
+    <td>2022-02-01</td>
+    <td>2022-02-05</td>
+    <td>Cúm nặng</td>
+    <td>accepted</td>
+  </tr>
+  <tr class="data">
+    <td>5</td>
+    <td>Nguyễn Ngọc Quý</td>
+    <td>2022-03-10</td>
+    <td>2022-03-11</td>
+    <td>Có việc riêng cần giải quyết </td>
+    <td>denied</td>
+  </tr>
+  <tr class="data">
+    <td>5</td>
+    <td>Nguyễn Ngọc Quý</td>
+    <td>2022-03-10</td>
+    <td>2022-03-11</td>
+    <td>Có việc riêng cần giải quyết </td>
+    <td>denied</td>
+    <tr class="data">
+    <td>2</td>
+    <td>Nguyễn Thị Năm</td>
+    <td>2022-02-01</td>
+    <td>2022-02-05</td>
+    <td>Cúm nặng</td>
+    <td>accepted</td>
+  </tr>
+  <tr class="data">
+    <td>2</td>
+    <td>Nguyễn Thị Năm</td>
+    <td>2022-02-01</td>
+    <td>2022-02-05</td>
+    <td>Cúm nặng</td>
+    <td>accepted</td>
+  </tr>
+  <tr class="data">
+    <td>2</td>
+    <td>Nguyễn Thị Năm</td>
+    <td>2022-02-01</td>
+    <td>2022-02-05</td>
+    <td>Cúm nặng</td>
+    <td>accepted</td>
+  </tr>
+  <tr class="data">
+    <td>2</td>
+    <td>Nguyễn Thị Năm</td>
+    <td>2022-02-01</td>
+    <td>2022-02-05</td>
+    <td>Cúm nặng</td>
+    <td>accepted</td>
+  </tr>
+  </tr>
 </table>
         <div class="function">
       <div class="button--area">
         <a href="Salary.jsp" class="button">Đến trang tính lương</a>
-        <a href="Home.jsp" class="button">Đến trang chấm công</a>
+        <a href="Home.jsp" class="button1">Đến trang chấm công</a>
       </div> 
     </div>
     </body>
