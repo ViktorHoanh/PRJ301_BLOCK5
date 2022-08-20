@@ -1,5 +1,5 @@
 -- Get employee -- 
-SELECT e.eid, e.ename, t.tid, t.date FROM Employee e LEFT JOIN Timesheet t ON e.eid = t.eid WHERE e.eid = '1'
+SELECT e.eid, e.ename,t.tid, t.date,t.status FROM Employee e LEFT JOIN (SELECT * FROM Timesheet WHERE date >= '2022-01-01' AND date <= '2022-01-31' ) t ON e.eid = t.eid 
 
 --Get absent--
 SELECT e.eid,e.ename,a.fromdate,a.todate,r.reason,r.isCheck  FROM Employee e LEFT JOIN Absent a ON e.eid = a.eid
