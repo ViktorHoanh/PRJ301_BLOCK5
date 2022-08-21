@@ -16,14 +16,15 @@ public class Timesheet {
     private int eid;
     private Date date;
     private int status;
-    private Employee employee;
 
-    public Employee getEmployee() {
-        return employee;
+    public Timesheet() {
     }
 
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
+    public Timesheet(int tid, int eid, Date date, int status) {
+        this.tid = tid;
+        this.eid = eid;
+        this.date = date;
+        this.status = status;
     }
 
     public int getTid() {
@@ -57,5 +58,8 @@ public class Timesheet {
     public void setStatus(int status) {
         this.status = status;
     }
+
+
+   
 
 }

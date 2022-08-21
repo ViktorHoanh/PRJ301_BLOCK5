@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -151,22 +152,9 @@
 
         <h1>Bảng chấm công</h1>
 
-        <form class="time">
+        <form class="time" action="getmonth" method="POST">
             <p>Tháng</p>
-            <select name="month" id="month">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-            </select>
+            <input type="month"/>
             <button type="submit">Go</button>
         </form>
 
@@ -250,86 +238,13 @@
                 <th class="content"><p>T.Hai</p></th>
             </tr>
             <tr>
-                <th>I</th>
-                <th>Bộ phận quản lý</th>
-                <td></td>
-                <td></td>
-                <td class="sunday"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td class="sunday"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td class="sunday"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td class="sunday"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td class="sunday"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Đào Văn Chỉnh</td>
-                <td>Giám đốc</td>
-                <td></td>
-                <td class="sunday"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td class="sunday"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td class="sunday"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td class="sunday"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td class="sunday"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+
+                <c:forEach items="${requestScope.employees}" var="e">
+                    <c:forEach items="getTimesheet(${e.eid}, month)" >
+                        
+                    </c:forEach>
+                
+            </c:forEach>
             </tr>
             <tr>
                 <td>2</td>
@@ -365,47 +280,6 @@
                 <td>1</td>
                 <td>1</td>
                 <td class="sunday">1</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <th>II</th>
-                <th>Bộ phận bán hàng</th>
-                <td></td>
-                <td></td>
-                <td class="sunday"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td class="sunday"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td class="sunday"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td class="sunday"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td class="sunday"></td>
                 <td></td>
                 <td></td>
                 <td></td>

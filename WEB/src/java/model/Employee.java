@@ -15,7 +15,10 @@ public class Employee {
     private int eid;
     private String ename;
     private String pid;
-    private ArrayList<Timesheet> timesheet = new ArrayList<>();
+//    private ArrayList<Timesheet> timesheet = new ArrayList<>();
+
+    public Employee() {
+    }
 
     public Employee(int eid, String ename, String pid) {
         this.eid = eid;
@@ -47,12 +50,12 @@ public class Employee {
         this.pid = pid;
     }
 
-    public ArrayList<Timesheet> getTimesheet() {
-        return timesheet;
-    }
-
-    public void setTimesheet(ArrayList<Timesheet> timesheet) {
-        this.timesheet = timesheet;
-    }
+//    public ArrayList<Timesheet> getTimesheet() {
+//        return timesheet;
+//    }
+//
+//    public void setTimesheet(ArrayList<Timesheet> timesheet) {
+//        this.timesheet = timesheet;
+//    }
 
 }
