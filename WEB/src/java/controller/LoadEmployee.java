@@ -6,6 +6,7 @@
 package controller;
 
 import dal.EmployeeDB;
+import dal.TimeSheet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -13,6 +14,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.util.ArrayList;
 import model.Employee;
 import model.Timesheet;
@@ -21,8 +23,8 @@ import model.Timesheet;
  *
  * @author Admin
  */
-@WebServlet(name="GetTimesheet", urlPatterns={"/gettimesheet"})
-public class GetTimesheet extends HttpServlet {
+@WebServlet(name="LoadEmployee", urlPatterns={"/loademployees"})
+public class LoadEmployee extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -39,10 +41,10 @@ public class GetTimesheet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet GetTimesheet</title>");  
+            out.println("<title>Servlet LoadEmployee</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet GetTimesheet at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet LoadEmployee at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -59,21 +61,10 @@ public class GetTimesheet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
-//        Date today = new Date();
-//        today = DateTimeHelper.removeTime(today);
-//        int dayOfMonth = DateTimeHelper.getDayOfMonth(today);
-//        Date begin = DateTimeHelper.addDays(today, -1*(dayOfMonth-1));
-//        Date end = DateTimeHelper.addDays(DateTimeHelper.addMonths(begin, 1),-1);
-//        ArrayList<Date> dates = DateTimeHelper.getDates(begin, end);
-//        EmployeeDBContext db = new EmployeeDBContext();
-//        ArrayList<Employee> employees = db.getEmployees(begin, DateTimeHelper.addDays(end,1));
-//        request.setAttribute("dates", dates);
-//        request.setAttribute("dates", dates);
-//        request.setAttribute("employees", employees);
-//        request.getRequestDispatcher("view/report.jsp").forward(request, response);
-//          String month = request.getParameter("month");     
-//          request.getRequestDispatcher("Home.jsp").forward(request, response);
+          EmployeeDB db = new EmployeeDB();
+          ArrayList<Employee> employees = db.getAllEmployee();        
+          request.setAttribute("employees", employees);
+          request.getRequestDispatcher("Home.jsp").forward(request, response);
     } 
 
     /** 
@@ -86,9 +77,7 @@ public class GetTimesheet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        String month = (String)request.getAttribute("months");
-        request.setAttribute("mon", month.charAt(2));
-        request.getRequestDispatcher("Home.jsp").forward(request, response);      
+        processRequest(request, response);
     }
 
     /** 

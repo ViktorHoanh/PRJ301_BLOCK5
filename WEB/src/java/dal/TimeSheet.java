@@ -21,13 +21,12 @@ public class TimeSheet {
     public List<Timesheet> getTimeSheet(int eid, int month) {
         List<Timesheet> timesheet = new ArrayList<>();
         Connection conn = new DBContext().connection;
-        String sql = "SELECT e.eid, e.ename,t.date,t.status FROM Employee e, Position p, Timesheet t\n"
-                + "WHERE e.pid = p.pid AND e.eid = t.eid AND MONTH(t.date) = ?";
+        String sql = "SELECT e.eid,t.date,t.status FROM Employee e, Position p, Timesheet t\n"
+                + "WHERE e.pid = p.pid AND e.eid = t.eid AND MONTH(t.date) = 1";
         try ( PreparedStatement st = conn.prepareStatement(sql)) {
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 Timesheet t = new Timesheet();
-                t.setTid(rs.getInt("tid"));
                 t.setEid(rs.getInt("eid"));
                 t.setDate(rs.getDate("date"));
                 t.setStatus(rs.getInt("status"));
@@ -42,4 +41,6 @@ public class TimeSheet {
         }
         return timesheet;
     }
+    
+
 }

@@ -20,7 +20,7 @@ public class EmployeeDB {
 
     public Employee getEmployeebyid(int eid) {
         Connection conn = new DBContext().connection;
-        String sql = "SELECT * FROM Employee WHERE eid ='1'";
+        String sql = "SELECT * FROM Employee WHERE eid =?";
         try ( PreparedStatement st = conn.prepareStatement(sql)) {
             st.setInt(1, eid);
             ResultSet rs = st.executeQuery();

@@ -362,7 +362,7 @@
 
         <div class="function">
             <div class="button--area">
-                <a href="Home.jsp" class="button">Trở về trang chấm công</a>
+                <a href="loademployees" class="button">Trở về trang chấm công</a>
                 <a href="AbsentStatus.jsp" class="button">Đến trang chấm nghỉ</a>
             </div>
             <form class="signature--area">

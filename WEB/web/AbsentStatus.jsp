@@ -262,7 +262,7 @@
     <div class="function">
         <div class="button--area">
             <a href="Salary.jsp" class="button">Đến trang tính lương</a>
-            <a href="Home.jsp" class="button1">Đến trang chấm công</a>
+            <a href="loademployees  " class="button1">Đến trang chấm công</a>
         </div> 
     </div>
 </body>
