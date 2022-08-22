@@ -69,8 +69,7 @@ public class DateTimeHelper {
         ArrayList<Date> dates = new ArrayList<>();
         int count = 0;
         while(true)
-        {
-            
+        {          
             Date item = addDays(from, count);
             dates.add(item);
             count++;

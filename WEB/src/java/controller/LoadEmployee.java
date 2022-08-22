@@ -15,6 +15,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.time.YearMonth;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -97,6 +98,9 @@ public class LoadEmployee extends HttpServlet {
         HttpSession session = request.getSession();     
         session.setAttribute("timesheets", timesheet);
         request.setAttribute("employees", employees);
+        YearMonth yearMonthObject = YearMonth.of(year, month);
+         int daysInMonth = yearMonthObject.lengthOfMonth();
+         request.setAttribute("daymonth", daysInMonth);
         request.getRequestDispatcher("Home.jsp").forward(request, response);
     }
 

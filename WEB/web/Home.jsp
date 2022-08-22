@@ -167,7 +167,7 @@
                 <th rowspan="3">TT</th>
                 <th rowspan="3">Họ và tên</th>
                 <th rowspan="3">Chức vụ</th>
-                <th colspan="31">Ngày trong tháng/Thứ trong tuần</th>
+                <th colspan="${daymonth}">Ngày trong tháng/Thứ trong tuần</th>
                 <th colspan="4" >Quy ra công</th>
                 <th rowspan="3" >Tổng cộng</th>
             </tr>
@@ -213,7 +213,10 @@
                             </c:if>
                             >
                            <c:forEach items="${sessionScope.timesheets}" var="t">
-                                ${dt.getDayOfMonth(dt.addDays(t,0))}
+                               <c:if test="${dt.getDayOfMonth(dt.addDays(t.date, 0)) eq dt.getDayOfMonth(d) && e.eid eq t.eid}">
+                                   ${t.status}
+                               </c:if>
+                                    
                             </c:forEach>                          
                         </td>
                     </c:forEach>
