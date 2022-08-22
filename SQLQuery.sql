@@ -26,3 +26,8 @@ SELECT t.status FROM Timesheet t WHERE t.eid = '1' AND t.date = '2022-01-01'
 
  SELECT e.eid,t.date,t.status FROM Employee e, Position p, Timesheet t
                WHERE e.pid = p.pid AND e.eid = t.eid AND MONTH(t.date) = '1'
+
+SELECT e.eid,e.ename,e.pid, ISNULL(t.tid,-1) tid, t.date,t.status FROM Employee e
+                                        LEFT JOIN (SELECT * FROM Timesheet WHERE MONTH(date) = '1' ) t 
+                                 ON e.eid = t.eid
+

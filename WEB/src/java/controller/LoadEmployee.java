@@ -98,6 +98,8 @@ public class LoadEmployee extends HttpServlet {
         HttpSession session = request.getSession();     
         session.setAttribute("timesheets", timesheet);
         request.setAttribute("employees", employees);
+//        List<Timesheet> timesheets2 = ts.getTimeTotalWorkingById(month+"");
+//        request.setAttribute("time2", timesheets2);
         YearMonth yearMonthObject = YearMonth.of(year, month);
          int daysInMonth = yearMonthObject.lengthOfMonth();
          request.setAttribute("daymonth", daysInMonth);

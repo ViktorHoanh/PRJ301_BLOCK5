@@ -4,6 +4,7 @@
  */
 package dal;
 
+import helper.DateTimeHelper;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -32,6 +33,8 @@ public class TimeSheet {
                 t.setDate(rs.getDate("date"));
                 t.setStatus(rs.getInt("status"));
                 timesheet.add(t);
+                
+                
             }
         } catch (SQLException ex) {
         } finally {
@@ -42,5 +45,30 @@ public class TimeSheet {
         }
         return timesheet;
     }
+  
+//    public List<Timesheet> getTimeTotalWorkingById(String month) {
+//        List<Timesheet> timesheet = new ArrayList<>();
+//        Connection conn = new DBContext().connection;
+//       String sql = "select COUNT(Timesheet.status) as status\n" +
+//"                    from Timesheet\n" +
+//"                    where Timesheet.status = '1' AND Timesheet.eid = 1 AND MONTH(Timesheet.date) = ?";
+//        try ( PreparedStatement st = conn.prepareStatement(sql)) {
+//            st.setString(1, month);
+//            ResultSet rs = st.executeQuery();
+//            while (rs.next()) {
+//                Timesheet t = new Timesheet();
+//                t.setStatus(rs.getInt("status"));
+//                timesheet.add(t);              
+//            }
+//        } catch (SQLException ex) {
+//        } finally {
+//            try {
+//                conn.close();
+//            } catch (Exception ex) {
+//            }
+//        }
+//        return null;
+//    }
+       
 
 }

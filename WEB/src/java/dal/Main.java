@@ -48,11 +48,18 @@ public class Main {
 //           System.out.println("pid:" + p.getPid() + "pname:" + p.getPname() + "base:" + p.getBasesalary() + "allowance" + p.getAllowancesalary() + "insurance" + p.getInsurance());
 //        }
 //    }
-    public static void main(String[] args) {
-        AbsentDB db = new AbsentDB();
-        ArrayList<Absent> absent = db.getAllAbsent();
-        for (Absent ab : absent) {
-            System.out.println("eid"+ab.getEid()+" "+ab.getFromdate()+" "+ab.getTodate()+" "+ab.getReason());
-        }
-    }
+//    public static void main(String[] args) {
+//        AbsentDB db = new AbsentDB();
+//        ArrayList<Absent> absent = db.getAllAbsent();
+//        for (Absent ab : absent) {
+//            System.out.println("eid"+ab.getEid()+" "+ab.getFromdate()+" "+ab.getTodate()+" "+ab.getReason()+" "+ab.isIsCheck());
+//        }
+//    }
+//            public static void main(String[] args) {
+//           TimeSheet ts = new TimeSheet();
+//          List<Timesheet> timesheet = ts.getTimeTotalWorkingById(1+"");
+//          for (Timesheet t : timesheet) {
+//              System.out.println("status"+t.getStatus());
+//        }
+//    }
 }

@@ -187,19 +187,11 @@
                 <th>Reason</th>
                 <th>Response</th>
             </tr>
-            <c:forEach items="${requestScope.employees}" var="e">
-                <c:forEach items="${requestScope.absents}" var="a">
-                    <tr class="data">
-                        <c:if test="${e.eid eq a.eid}">
-                            <td>${a.eid}</td>
+            <c:forEach items="${requestScope.employees}" var="e">               
+                    <tr class="data">                       
+                            <td>${e.eid}</td>
                             <td>${e.ename}</td>
-                            <td>${a.fromdate}</td>
-                            <td>${a.todate}</td>
-                            <td>${a.reason}</td>
-                            <td></td>
-                        </c:if>
             </tr>
-                </c:forEach>
             </c:forEach>
             
             

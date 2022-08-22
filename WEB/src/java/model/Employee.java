@@ -4,6 +4,7 @@
  */
 package model;
 
+import dal.TimeSheet;
 import java.util.ArrayList;
 
 /**
@@ -15,8 +16,8 @@ public class Employee {
     private int eid;
     private String ename;
     private String pid;
-//    private ArrayList<Timesheet> timesheet = new ArrayList<>();
-
+    
+    
     public Employee() {
     }
 
@@ -50,12 +51,5 @@ public class Employee {
         this.pid = pid;
     }
 
-//    public ArrayList<Timesheet> getTimesheet() {
-//        return timesheet;
-//    }
-//
-//    public void setTimesheet(ArrayList<Timesheet> timesheet) {
-//        this.timesheet = timesheet;
-//    }
 
 }

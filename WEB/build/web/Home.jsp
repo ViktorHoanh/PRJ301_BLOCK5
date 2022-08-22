@@ -215,12 +215,12 @@
                            <c:forEach items="${sessionScope.timesheets}" var="t">
                                <c:if test="${dt.getDayOfMonth(dt.addDays(t.date, 0)) eq dt.getDayOfMonth(d) && e.eid eq t.eid}">
                                    ${t.status}
-                               </c:if>
-                                    
+                               </c:if>                            
                             </c:forEach>                          
                         </td>
                     </c:forEach>
-                    <td></td>
+<!--                        <td>${requestScope.time2.status}</td>-->
+                        <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -237,18 +237,22 @@
                 <h2>Ký Hiệu Chấm Công</h2>
                 <table class="table">
                     <tr style="background-color: #f2f2c0">
+                        <th>Ngày nghỉ</th>
+                            <th style="font-size: 150%">   0 </th>
+                        </tr>
+                    <tr>
                             <th>Đi Làm</th>
                             <th style="font-size: 150%">  1  </th>
                         </tr>
-                        <tr>
+                        <tr style="background-color: #f2f2c0">
                             <th>Nghỉ hưởng lương 100%</th>
                             <th style="font-size: 150%">          2            </th>
                         </tr>
-                        <tr style="background-color: #f2f2c0">
+                        <tr >
                             <th>Nghỉ hưởng lương 50%</th>
                             <th style="font-size: 150%">3</th>
                         </tr>
-                        <tr>
+                        <tr style="background-color: #f2f2c0">
                             <th>Không đi làm</th>
                             <th style="font-size: 150%">4</th>
                         </tr>

@@ -4,7 +4,9 @@
  */
 package model;
 
+import dal.TimeSheet;
 import java.sql.Date;
+import java.util.ArrayList;
 
 /**
  *
@@ -16,6 +18,21 @@ public class Timesheet {
     private int eid;
     private Date date;
     private int status;
+    
+//    private ArrayList<TimeSheet> time = new ArrayList<>();
+//
+//    public ArrayList<TimeSheet> getTimesheets() {
+//        return time;
+//    }
+//
+//    public void setTimesheets(ArrayList<TimeSheet> timesheets) {
+//        this.time = timesheets;
+//    }
+//    
+//    public int getNumberOfWorkingDays()
+//    {
+//        return time.size();
+//    }
 
     public Timesheet() {
     }
