@@ -213,7 +213,7 @@
                             </c:if>
                             >
                            <c:forEach items="${sessionScope.timesheets}" var="t">
-                                ${t.getDate()}
+                                ${dt.getDayOfMonth(dt.addDays(t,0))}
                             </c:forEach>                          
                         </td>
                     </c:forEach>
