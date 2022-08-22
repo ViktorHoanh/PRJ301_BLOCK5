@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -162,27 +163,12 @@
         <h3>Công ty TNHH MTV</h3>
 
         <h1>Bảng tính lương</h1>
-        <h1>${requestScope.m}</h1>
 
-        <form class="time">
+        <form class="time" action="loademployees" method="post">
             <p>Tháng</p>
-            <select name="month" id="month">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-            </select>
+            <input type="month" id="months" name="months">
             <button type="submit">Go</button>
         </form>
-
         <table class="table">
             <tr class="heading">
                 <th rowspan="2">TT</th>
@@ -205,161 +191,16 @@
                 <th>BHXH</th>
                 <th>Thuế</th>
             </tr>
-            <tr>
-                <th>I</th>
-                <th>Bộ phận quản lý</th>
-                <td></td>
-                <td>8694400</td>
-                <td></td>
-                <td ></td>
-                <td></td>
-                <td></td>
-                <td>31</td>
-                <td>970000</td>
-                <td>9664400</td>
-                <td>440412</td>
-                <td>0</td>
-                <td>9223988</td>
-                <td></td>
-
-            </tr>
+            
             <tr class="data">
-                <td>1</td>
-                <td>Đào Văn Chỉnh</td>
-                <td>Giám đốc</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <c:forEach items="${requestScope.employees}" var="e" >
+                    <td>${e.eid}</td>
+                    <td>${e.ename}</td>
+                    <td></td>
+                </c:forEach>
             </tr>
-            <tr class="data">
-                <td>2</td>
-                <td>Nguyễn Thị Năm</td>
-                <td>Kế toán</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <th>II</th>
-                <th>Bộ phận bán hàng</th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr class="data">
-                <td>1</td>
-                <td>Đào Đình Cử</td>
-                <td>Lái xe</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr class="data">
-                <td>2</td>
-                <td>Bùi Thị chi</td>
-                <td>Bán hàng</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr class="data">
-                <td>3</td>
-                <td>Nguyễn Ngọc Quý</td>
-                <td>Kinh doanh</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr class="data">
-                <td>4</td>
-                <td>Nguyễn Thị Hải Ánh</td>
-                <td>Nhân viên</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr class="data">
-                <td>5</td>
-                <td>Nguyễn Thị Ngọc Ánh</td>
-                <td>Nhân viên</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-        </table>
+  
+                    </table>
 
         <div class="function">
             <div class="button--area">

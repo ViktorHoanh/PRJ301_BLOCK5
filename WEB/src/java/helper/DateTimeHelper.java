@@ -18,8 +18,8 @@ import java.util.Date;
  */
 public class DateTimeHelper {
 
-    public static int getDayOfMonth(Date datetime) {
-        LocalDate localDate = datetime.toInstant()
+    public static int getDayOfMonth(Date date) {
+        LocalDate localDate = date.toInstant()
                 .atZone(ZoneId.systemDefault())
                 .toLocalDate();
         return localDate.getDayOfMonth();
@@ -30,8 +30,8 @@ public class DateTimeHelper {
         return new Timestamp(date.getTime());
     }
 
-    public static int getDayOfWeek(Date datetime) {
-        LocalDate localDate = datetime.toInstant()
+    public static int getDayOfWeek(Date date) {
+        LocalDate localDate = date.toInstant()
                 .atZone(ZoneId.systemDefault())
                 .toLocalDate();
         return localDate.getDayOfWeek().getValue();
@@ -53,13 +53,13 @@ public class DateTimeHelper {
         return newdate;
     }
 
-    public static Date removeTime(Date d) {
+    public static Date removeTime(int year,int month) {
         Calendar c = Calendar.getInstance();
-        c.setTime(d);
-        c.set(Calendar.HOUR_OF_DAY, 0);
-        c.set(Calendar.MINUTE, 0);
-        c.set(Calendar.SECOND, 0);
-        c.set(Calendar.MILLISECOND, 0);
+        c.set(year, month, 1);
+//        c.set(Calendar.HOUR_OF_DAY, 0);
+//        c.set(Calendar.MINUTE, 0);
+//        c.set(Calendar.SECOND, 0);
+//        c.set(Calendar.MILLISECOND, 0);
         Date newdate = c.getTime();
         return newdate;
     }

@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -145,6 +146,8 @@
                 font-size: 16px;
                 cursor: pointer;
                 height: 40px;
+                
+
             }
         </style>
         <jsp:useBean id="dt" class="helper.DateTimeHelper"/>
@@ -153,7 +156,7 @@
 
         <h1>Bảng chấm công</h1>
 
-        <form class="time" action="loademployees" method="GET">
+        <form class="time" action="loademployees" method="post">
             <p>Tháng</p>
             <input type="month" id="months" name="months">
             <button type="submit">Go</button>
@@ -169,74 +172,33 @@
                 <th rowspan="3" >Tổng cộng</th>
             </tr>
             <tr>
-                <th>01</th>
-                <th class="sunday">02</th>
-                <th>03</th>
-                <th>04</th>
-                <th>05</th>
-                <th>06</th>
-                <th>07</th>
-                <th>08</th>
-                <th class="sunday">09</th>
-                <th>10</th>
-                <th>11</th>
-                <th>12</th>
-                <th>13</th>
-                <th>14</th>
-                <th>15</th>
-                <th class="sunday">16</th>
-                <th>17</th>
-                <th>18</th>
-                <th>19</th>
-                <th>20</th>
-                <th>21</th>
-                <th>22</th>
-                <th class="sunday">23</th>
-                <th>24</th>
-                <th>25</th>
-                <th>26</th>
-                <th>27</th>
-                <th>28</th>
-                <th>29</th>
-                <th class="sunday">30</th>
-                <th>31</th>
+                <c:forEach items="${requestScope.dates}" var="d">
+                    <th
+                        <c:if test="${ dt.getDayOfWeek(d) eq 7}">
+                            style="background-color: #f2f2c0;"
+                        </c:if>
+                        >
+                        <fmt:formatDate pattern = "dd" 
+                                        value = "${d}" /> <br/>
+                    </th>
+                </c:forEach>
                 <th rowspan="2">công ngày</th>
                 <th rowspan="2">công chủ nhật</th>
                 <th rowspan="2">hưởng lương 100%</th>
                 <th rowspan="2">hưởng lương 50%</th>
             </tr>
             <tr>
-                <th class="content"><p>T.Bảy</p></th>
-                <th class="content sunday"><p>C.Nhật</p></th>
-                <th class="content"><p>T.Hai</p></th>
-                <th class="content"><p>T.Ba</p></th>
-                <th class="content"><p>T.Tư</p></th>
-                <th class="content"><p>T.Năm</p></th>
-                <th class="content"><p>T.Sáu</p></th>
-                <th class="content"><p>T.Bảy</p></th>
-                <th class="content sunday"><p>C.Nhật</p></th>
-                <th class="content"><p>T.Hai</p></th>
-                <th class="content"><p>T.Ba</p></th>
-                <th class="content"><p>T.Tư</p></th>
-                <th class="content"><p>T.Năm</p></th>
-                <th class="content"><p>T.Sáu</p></th>
-                <th class="content"><p>T.Bảy</p></th>
-                <th class="content sunday"><p>C.Nhật</p></th>
-                <th class="content"><p>T.Hai</p></th>
-                <th class="content"><p>T.Ba</p></th>
-                <th class="content"><p>T.Tư</p></th>
-                <th class="content"><p>T.Năm</p></th>
-                <th class="content"><p>T.Sáu</p></th>
-                <th class="content"><p>T.Bảy</p></th>
-                <th class="content sunday"><p>C.Nhật</p></th>
-                <th class="content"><p>T.Hai</p></th>
-                <th class="content"><p>T.Ba</p></th>
-                <th class="content"><p>T.Tư</p></th>
-                <th class="content"><p>T.Năm</p></th>
-                <th class="content"><p>T.Sáu</p></th>
-                <th class="content"><p>T.Bảy</p></th>
-                <th class="content sunday"><p>C.Nhật</p></th>
-                <th class="content"><p>T.Hai</p></th>
+                <c:forEach items="${requestScope.dates}" var="d">
+                    <td
+                        <c:if test="${ dt.getDayOfWeek(d) eq 7 }">
+                            style="background-color: #f2f2c0;"
+                        </c:if>
+                        >
+
+                        <fmt:formatDate pattern = "EEE" 
+                                        value = "${d}" />
+                    </td>
+                </c:forEach>
             </tr>
 
             <c:forEach items="${requestScope.employees}" var="e">
@@ -244,32 +206,70 @@
                     <td>${e.eid}</td>
                     <td>${e.ename}</td>
                     <td>${e.pid}</td>
-                    <c:forEach items="${requestScope.timesheets}" var="t">
-                        <td>${t.status}</td>
-                    </c:forEach>                                          
+                    <c:forEach items="${requestScope.dates}" var="d">
+                        <td 
+                            <c:if test="${ dt.getDayOfWeek(d) eq 7}">
+                                style="background-color: #f2f2c0;"
+                            </c:if>
+                            >
+                           <c:forEach items="${sessionScope.timesheets}" var="t">
+                                ${t.getDate()}
+                            </c:forEach>                          
+                        </td>
+                    </c:forEach>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                 
                 </tr>
-              </c:forEach>
-           
-    
-        </table>
+            </c:forEach>
 
-        <div class="function">
-            <div class="button--area">
-                <a href="Salary.jsp" class="button">Đến trang tính lương</a>
-                <a href="AbsentStatus.jsp" class="button">Đến trang chấm nghỉ</a>
+
+        </table>
+        <br>
+        <div id = "main">
+            <div id="kyhieu">
+                <h2>Ký Hiệu Chấm Công</h2>
+                <table class="table">
+                    <tr style="background-color: #f2f2c0">
+                            <th>Đi Làm</th>
+                            <th style="font-size: 150%">  1  </th>
+                        </tr>
+                        <tr>
+                            <th>Nghỉ hưởng lương 100%</th>
+                            <th style="font-size: 150%">          2            </th>
+                        </tr>
+                        <tr style="background-color: #f2f2c0">
+                            <th>Nghỉ hưởng lương 50%</th>
+                            <th style="font-size: 150%">3</th>
+                        </tr>
+                        <tr>
+                            <th>Không đi làm</th>
+                            <th style="font-size: 150%">4</th>
+                        </tr>
+                </table>
             </div>
-            <form class="signature--area">
-                <div class="signature--form">
-                    <div class="signature--input">
-                        <label for="">Người chấm công</label>
-                        <input type="text" placeholder="(Ký họ tên)" />
-                    </div>
-                    <div class="signature--input">
-                        <label for="">Giám đốc</label>
-                        <input type="text" placeholder="(Ký họ tên)" />
-                    </div>
-                </div>
-            </form>
         </div>
+
+            <div class="function">
+                <div class="button--area">
+                    <a href="loadsalary" class="button">Đến trang tính lương</a>
+                    <a href="AbsentStatus.jsp" class="button">Đến trang chấm nghỉ</a>
+                </div>
+                <form class="signature--area">
+                    <div class="signature--form">
+                        <div class="signature--input">
+                            <label for="">Người chấm công</label>
+                            <input type="text" placeholder="(Ký họ tên)" />
+                        </div>
+                        <div class="signature--input">
+                            <label for="">Giám đốc</label>
+                            <input type="text" placeholder="(Ký họ tên)" />
+                        </div>
+                    </div>
+                </form>
+            </div>
     </body>
 </html>
