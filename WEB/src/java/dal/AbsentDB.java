@@ -9,27 +9,28 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import model.Position;
+import model.Absent;
+import model.Employee;
 
 /**
  *
  * @author Admin
  */
-public class PositionDB {
-    public Position getPositionbyid(String pid) {
+public class AbsentDB {
+    public Absent getAbsentbyid(int eid) {
         Connection conn = new DBContext().connection;
-        String sql = "SELECT * FROM Position WHERE pid =?";
+        String sql = "SELECT * FROM Absent WHERE eid =?";
         try ( PreparedStatement st = conn.prepareStatement(sql)) {
-            st.setString(1, pid);
+            st.setInt(1, eid);
             ResultSet rs = st.executeQuery();
-            while (rs.next()) {
-                Position p = new Position();
-                p.setPid(rs.getString("pid"));
-                p.setPname(rs.getString("pname"));
-                p.setBasesalary(rs.getDouble("basesalary"));
-                p.setAllowancesalary(rs.getDouble("allowancesalary"));
-                p.setInsurance(rs.getDouble("insurance"));
-                return p;
+            while (rs.next()) {                
+                Absent a = new Absent();
+                a.setEid(rs.getInt("eid"));
+                a.setFromdate(rs.getDate("fromdate"));
+                a.setTodate(rs.getDate("todate"));
+                a.setReason(rs.getString("reason"));
+                a.setIsCheck(rs.getBoolean("isCheck"));
+                return a;
             }
         } catch (SQLException ex) {
         } finally {
@@ -40,14 +41,15 @@ public class PositionDB {
         }
         return null;
     }
-    public ArrayList<Position> getAllPosition() {
-        ArrayList<Position> position = new ArrayList<>();
+
+    public ArrayList<Absent> getAllAbsent() {
+        ArrayList<Absent> absent = new ArrayList<>();
         Connection conn = new DBContext().connection;
-        String sql = " SELECT * FROM Position";
+        String sql = "SELECT * FROM Absent";
         try ( PreparedStatement st = conn.prepareStatement(sql)) {
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
-                position.add(getPositionbyid(rs.getString("pid")));
+                 absent.add(getAbsentbyid(rs.getInt("eid")));
             }
         } catch (SQLException ex) {
         } finally {
@@ -56,6 +58,6 @@ public class PositionDB {
             } catch (Exception ex) {
             }
         }
-        return position;
+        return absent;
     }
 }

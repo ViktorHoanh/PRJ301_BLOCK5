@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import model.Absent;
 import model.Employee;
 import model.Position;
 import model.Timesheet;
@@ -41,10 +42,17 @@ public class Main {
 //        System.out.println("DAY_OF_WEEK: " + calendar.get(Calendar.DAY_OF_WEEK));
 //    }
 //    public static void main(String[] args) {
-//        SalaryDB db = new SalaryDB();
+//        PositionDB db = new PositionDB();
 //        ArrayList<Position> position = db.getAllPosition();
 //        for (Position p : position) {
 //           System.out.println("pid:" + p.getPid() + "pname:" + p.getPname() + "base:" + p.getBasesalary() + "allowance" + p.getAllowancesalary() + "insurance" + p.getInsurance());
 //        }
 //    }
+    public static void main(String[] args) {
+        AbsentDB db = new AbsentDB();
+        ArrayList<Absent> absent = db.getAllAbsent();
+        for (Absent ab : absent) {
+            System.out.println("eid"+ab.getEid()+" "+ab.getFromdate()+" "+ab.getTodate()+" "+ab.getReason());
+        }
+    }
 }

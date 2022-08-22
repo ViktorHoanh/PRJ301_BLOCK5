@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -186,78 +187,22 @@
                 <th>Reason</th>
                 <th>Response</th>
             </tr>
-            <tr class="data">
-                <td>2</td>
-                <td>Nguyễn Thị Năm</td>
-                <td>2022-02-01</td>
-                <td>2022-02-05</td>
-                <td>Cúm nặng</td>
-                <td>accepted</td>
+            <c:forEach items="${requestScope.employees}" var="e">
+                <c:forEach items="${requestScope.absents}" var="a">
+                    <tr class="data">
+                        <c:if test="${e.eid eq a.eid}">
+                            <td>${a.eid}</td>
+                            <td>${e.ename}</td>
+                            <td>${a.fromdate}</td>
+                            <td>${a.todate}</td>
+                            <td>${a.reason}</td>
+                            <td></td>
+                        </c:if>
             </tr>
-            <tr class="data">
-                <td>5</td>
-                <td>Nguyễn Ngọc Quý</td>
-                <td>2022-03-10</td>
-                <td>2022-03-11</td>
-                <td>Có việc riêng cần giải quyết </td>
-                <td>denied</td>
-            </tr>
-            <tr class="data">
-                <td>2</td>
-                <td>Nguyễn Thị Năm</td>
-                <td>2022-02-01</td>
-                <td>2022-02-05</td>
-                <td>Cúm nặng</td>
-                <td>accepted</td>
-            </tr>
-            <tr class="data">
-                <td>5</td>
-                <td>Nguyễn Ngọc Quý</td>
-                <td>2022-03-10</td>
-                <td>2022-03-11</td>
-                <td>Có việc riêng cần giải quyết </td>
-                <td>denied</td>
-            </tr>
-            <tr class="data">
-                <td>5</td>
-                <td>Nguyễn Ngọc Quý</td>
-                <td>2022-03-10</td>
-                <td>2022-03-11</td>
-                <td>Có việc riêng cần giải quyết </td>
-                <td>denied</td>
-            <tr class="data">
-                <td>2</td>
-                <td>Nguyễn Thị Năm</td>
-                <td>2022-02-01</td>
-                <td>2022-02-05</td>
-                <td>Cúm nặng</td>
-                <td>accepted</td>
-            </tr>
-            <tr class="data">
-                <td>2</td>
-                <td>Nguyễn Thị Năm</td>
-                <td>2022-02-01</td>
-                <td>2022-02-05</td>
-                <td>Cúm nặng</td>
-                <td>accepted</td>
-            </tr>
-            <tr class="data">
-                <td>2</td>
-                <td>Nguyễn Thị Năm</td>
-                <td>2022-02-01</td>
-                <td>2022-02-05</td>
-                <td>Cúm nặng</td>
-                <td>accepted</td>
-            </tr>
-            <tr class="data">
-                <td>2</td>
-                <td>Nguyễn Thị Năm</td>
-                <td>2022-02-01</td>
-                <td>2022-02-05</td>
-                <td>Cúm nặng</td>
-                <td>accepted</td>
-            </tr>
-        </tr>
+                </c:forEach>
+            </c:forEach>
+            
+            
     </table>
     <div class="function">
         <div class="button--area">

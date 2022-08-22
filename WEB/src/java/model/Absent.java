@@ -13,7 +13,6 @@ import java.sql.Date;
 public class Absent {
     private int abid;
     private int eid;
-    private int reid;
     private Date fromdate;
     private Date todate;
     private String reason;
@@ -22,10 +21,9 @@ public class Absent {
     public Absent() {
     }
 
-    public Absent(int abid, int eid, int reid, Date fromdate, Date todate, String reason, boolean isCheck) {
+    public Absent(int abid, int eid, Date fromdate, Date todate, String reason, boolean isCheck) {
         this.abid = abid;
         this.eid = eid;
-        this.reid = reid;
         this.fromdate = fromdate;
         this.todate = todate;
         this.reason = reason;
@@ -66,13 +64,7 @@ public class Absent {
         this.eid = eid;
     }
 
-    public int getReid() {
-        return reid;
-    }
-
-    public void setReid(int reid) {
-        this.reid = reid;
-    }
+  
 
     public Date getFromdate() {
         return fromdate;

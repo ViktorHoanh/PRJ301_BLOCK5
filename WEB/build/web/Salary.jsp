@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -164,7 +165,7 @@
 
         <h1>Bảng tính lương</h1>
 
-        <form class="time" action="loademployees" method="post">
+        <form class="time" action="loadsalary" method="post">
             <p>Tháng</p>
             <input type="month" id="months" name="months">
             <button type="submit">Go</button>
@@ -179,7 +180,7 @@
                 <th rowspan="2" >Tổng cộng</th>
                 <th rowspan="2">Phụ cấp </th>
                 <th rowspan="2">Tổng thu nhập</th>
-                <th colspan="2">Các khoản khấu trừ</th>      
+                <th colspan="1">Các khoản khấu trừ</th>      
                 <th rowspan="2">Thực lĩnh</th>
                 <th rowspan="2">Ký nhận</th>
             </tr>
@@ -189,16 +190,32 @@
                 <th>hưởng lương 100%</th>
                 <th>hưởng lương 50%</th>
                 <th>BHXH</th>
-                <th>Thuế</th>
             </tr>
             
-            <tr class="data">
+      
                 <c:forEach items="${requestScope.employees}" var="e" >
+                    <tr>
                     <td>${e.eid}</td>
                     <td>${e.ename}</td>
-                    <td></td>
+                    <c:forEach items="${requestScope.positions}" var="p">
+                        <c:if test="${p.pid eq e.pid}">
+                            <td>${p.pname}</td>
+                            <td>${p.basesalary}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>${p.allowancesalary}</td>
+                            <td></td>
+                            <td>${p.insurance}</td>
+                            <td></td>
+                            <td>${e.ename}</td>
+                        </c:if>
+                    </c:forEach>
+                    </tr>
                 </c:forEach>
-            </tr>
+           
   
                     </table>
 

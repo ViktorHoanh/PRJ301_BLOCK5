@@ -5,9 +5,8 @@
 
 package controller;
 
+import dal.AbsentDB;
 import dal.EmployeeDB;
-import dal.PositionDB;
-import dal.TimeSheet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -15,19 +14,16 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import java.util.ArrayList;
-import java.util.List;
+import model.Absent;
 import model.Employee;
-import model.Position;
-import model.Timesheet;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name="LoaddatatoSalary", urlPatterns={"/loadsalary"})
-public class LoaddatatoSalary extends HttpServlet {
+@WebServlet(name="GetAbsent", urlPatterns={"/getabsent"})
+public class GetAbsent extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -44,10 +40,10 @@ public class LoaddatatoSalary extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet LoaddatatoSalary</title>");  
+            out.println("<title>Servlet GetAbsent</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet LoaddatatoSalary at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet GetAbsent at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -64,7 +60,7 @@ public class LoaddatatoSalary extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        response.sendRedirect("Salary.jsp");
+        response.sendRedirect("AbsentStatus.jsp");
     } 
 
     /** 
@@ -77,17 +73,13 @@ public class LoaddatatoSalary extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        String m = request.getParameter("months");
-        String[] list = m.split("-");
-        int year = Integer.parseInt(list[0]);
-        int month = Integer.parseInt(list[1]);
-        PositionDB po = new PositionDB();
-        ArrayList<Position> position = po.getAllPosition();
         EmployeeDB db = new EmployeeDB();
-        ArrayList<Employee> employees = db.getAllEmployee();        
-        request.setAttribute("positions", position);
+        ArrayList<Employee> employees = db.getAllEmployee(); 
         request.setAttribute("employees", employees);
-        request.getRequestDispatcher("Salary.jsp").forward(request, response);
+        AbsentDB ab = new AbsentDB();
+        ArrayList<Absent> absent = ab.getAllAbsent();
+        request.setAttribute("absents", absent);
+        request.getRequestDispatcher("AbsentStatus.jsp").forward(request, response);
     }
 
     /** 
