@@ -26,9 +26,9 @@ public class Main {
     
         public static void main(String[] args) {
         TimeSheet ts = new TimeSheet();
-          List<Timesheet> timesheet = ts.getTimeSheet(1, 2);
+          List<Timesheet> timesheet = ts.getTimeSheet(1, 1);
           for (Timesheet t : timesheet) {
-              System.out.println(t.getDate());
+              System.out.println("eid"+t.getEid()+"date"+t.getDate()+"status"+t.getStatus());
         }
     }
 

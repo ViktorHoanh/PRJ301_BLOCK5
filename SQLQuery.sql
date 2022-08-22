@@ -2,6 +2,10 @@
 
 SELECT * FROM Employee e, Position p, Timesheet t
 WHERE e.pid = p.pid AND e.eid = t.eid AND MONTH(t.date) = 1
+
+SELECT e.ename,pname,t.date,t.status FROM Employee e JOIN Position p ON e.pid = p.pid
+                         JOIN Timesheet t ON e.eid = t.eid
+						 WHERE e.eid = '1' AND MONTH(t.date) = 1
 --get Employee--
 SELECT * FROM Employee
                                                              
@@ -17,3 +21,5 @@ SELECT t.status FROM Timesheet t WHERE t.eid = '1' AND t.date = '2022-01-01'
  SELECT e.eid,e.ename,p.pname,p.basesalary,p.allowancesalary,p.insurance FROM Employee e LEFT JOIN Position p ON e.pid = p.pid
 
 
+ SELECT e.eid,t.date,t.status FROM Employee e, Position p, Timesheet t
+               WHERE e.pid = p.pid AND e.eid = t.eid AND MONTH(t.date) = '1'

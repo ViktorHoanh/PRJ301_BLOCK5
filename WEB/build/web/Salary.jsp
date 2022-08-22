@@ -162,6 +162,7 @@
         <h3>Công ty TNHH MTV</h3>
 
         <h1>Bảng tính lương</h1>
+        <h1>${requestScope.m}</h1>
 
         <form class="time">
             <p>Tháng</p>

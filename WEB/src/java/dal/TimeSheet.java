@@ -18,12 +18,15 @@ import model.Timesheet;
  */
 public class TimeSheet {
 
-    public List<Timesheet> getTimeSheet(int eid, int month) {
+    public List<Timesheet> getTimeSheet(int eid,int month) {
         List<Timesheet> timesheet = new ArrayList<>();
         Connection conn = new DBContext().connection;
-        String sql = "SELECT e.eid,t.date,t.status FROM Employee e, Position p, Timesheet t\n"
-                + "WHERE e.pid = p.pid AND e.eid = t.eid AND MONTH(t.date) = 1";
-        try ( PreparedStatement st = conn.prepareStatement(sql)) {
+        String sql = "SELECT e.ename,pname,t.date,t.status FROM Employee e JOIN Position p ON e.pid = p.pid\n"
+                + "                         JOIN Timesheet t ON e.eid = t.eid\n"
+                + "						 WHERE e.eid = '?' AND MONTH(t.date) = ?";
+        try ( PreparedStatement st = conn.prepareStatement(sql)) {       
+            st.setInt(1, eid);
+            st.setInt(2, month);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 Timesheet t = new Timesheet();
@@ -41,6 +44,5 @@ public class TimeSheet {
         }
         return timesheet;
     }
-    
 
 }

@@ -147,12 +147,13 @@
                 height: 40px;
             }
         </style>
+        <jsp:useBean id="dt" class="helper.DateTimeHelper"/>
 
         <h3>Công ty TNHH MTV</h3>
 
         <h1>Bảng chấm công</h1>
 
-        <form class="time" action="gettimesheet" method="POST">
+        <form class="time" action="loademployees" method="GET">
             <p>Tháng</p>
             <input type="month" id="months" name="months">
             <button type="submit">Go</button>
@@ -243,10 +244,13 @@
                     <td>${e.eid}</td>
                     <td>${e.ename}</td>
                     <td>${e.pid}</td>
-                    
+                    <c:forEach items="${requestScope.timesheets}" var="t">
+                        <td>${t.status}</td>
+                    </c:forEach>                                          
                 </tr>
               </c:forEach>
-
+           
+    
         </table>
 
         <div class="function">
