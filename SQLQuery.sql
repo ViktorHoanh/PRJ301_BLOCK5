@@ -31,3 +31,4 @@ SELECT e.eid,e.ename,e.pid, ISNULL(t.tid,-1) tid, t.date,t.status FROM Employee 
                                         LEFT JOIN (SELECT * FROM Timesheet WHERE MONTH(date) = '1' ) t 
                                  ON e.eid = t.eid
 
+								 SELECT * FROM Absent WHERE eid ='2'

@@ -16,12 +16,12 @@ public class Working {
     private int congchunhat;
     private int huongluong100;
     private int huongluong50;
-    private int tongcong;
+    private double tongcong;
 
     public Working() {
     }
 
-    public Working(int eid, int ngaycong, int congchunhat, int huongluong100, int huongluong50, int tongcong) {
+    public Working(int eid, int ngaycong, int congchunhat, int huongluong100, int huongluong50, double tongcong) {
         this.eid = eid;
         this.ngaycong = ngaycong;
         this.congchunhat = congchunhat;
@@ -73,11 +73,11 @@ public class Working {
         this.huongluong50 = huongluong50;
     }
 
-    public int getTongcong() {
+    public double getTongcong() {
         return tongcong;
     }
 
-    public void setTongcong(int tongcong) {
+    public void setTongcong(double tongcong) {
         this.tongcong = tongcong;
     }
 

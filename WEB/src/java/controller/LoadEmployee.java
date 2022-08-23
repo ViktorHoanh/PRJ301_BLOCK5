@@ -107,7 +107,7 @@ public class LoadEmployee extends HttpServlet {
             int count1 = 0;
             int count2 = 0;
             int count3 = 0;
-            int count4 = 0;
+            double count4 = 0;
             Working working = new Working();
                  working.setEid(e.getEid());
             for (Timesheet t: timesheet){

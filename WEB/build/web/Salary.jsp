@@ -211,9 +211,17 @@
                         </c:if>
                     </c:forEach>
                             <td>${p.allowancesalary}</td>
-                            <td></td>
+                            <c:forEach items="${requestScope.salary}" var="s">
+                                <c:if test="${e.eid == s.eid}">
+                                    <td>${s.tongthunhap}</td>
+                                </c:if>
+                            </c:forEach>
                             <td>${p.insurance}</td>
-                            <td></td>
+                            <c:forEach items="${requestScope.salary}" var="s">
+                                <c:if test="${e.eid == s.eid}">
+                                    <td>${s.thuclinh}</td>
+                                </c:if>
+                            </c:forEach>
                             <td>${e.ename}</td>
                         </c:if>
                     </c:forEach>
