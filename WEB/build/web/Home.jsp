@@ -225,7 +225,7 @@
                             <td>${w.congchunhat}</td>
                             <td>${w.huongluong100}</td>
                             <td>${w.huongluong50}</td>
-                            <td>${w.tongcong}</td>
+                            <td><fmt:formatNumber type="number" maxFractionDigits="0" value="${w.tongcong}"/></td>
                         </c:if>
                     </c:forEach>
 

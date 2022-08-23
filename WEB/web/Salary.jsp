@@ -191,10 +191,10 @@
                 <th>hưởng lương 50%</th>
                 <th>BHXH</th>
             </tr>
-            
-      
-                <c:forEach items="${requestScope.employees}" var="e" >
-                    <tr>
+
+
+            <c:forEach items="${requestScope.employees}" var="e" >
+                <tr>
                     <td>${e.eid}</td>
                     <td>${e.ename}</td>
                     <c:forEach items="${requestScope.positions}" var="p">
@@ -202,34 +202,35 @@
                             <td>${p.pname}</td>
                             <td>${p.basesalary}</td>
                             <c:forEach items="${requestScope.working}" var="w">
-                        <c:if test="${e.eid == w.eid}">
-                            <td>${w.ngaycong}</td>
-                            <td>${w.congchunhat}</td>
-                            <td>${w.huongluong100}</td>
-                            <td>${w.huongluong50}</td>
-                            <td>${w.tongcong}</td>
-                        </c:if>
-                    </c:forEach>
-                            <td>${p.allowancesalary}</td>
-                            <c:forEach items="${requestScope.salary}" var="s">
-                                <c:if test="${e.eid == s.eid}">
-                                    <td>${s.tongthunhap}</td>
+                                <c:if test="${e.eid == w.eid}">
+                                    <td>${w.ngaycong}</td>
+                                    <td>${w.congchunhat}</td>
+                                    <td>${w.huongluong100}</td>
+                                    <td>${w.huongluong50}</td>
+                                    <td><fmt:formatNumber type="number" maxFractionDigits="0" value="${w.tongcong}"/></td>
                                 </c:if>
                             </c:forEach>
-                            <td>${p.insurance}</td>
+
+                            <td><fmt:formatNumber type="number" maxFractionDigits="0" value="${p.allowancesalary}"/></td>
                             <c:forEach items="${requestScope.salary}" var="s">
                                 <c:if test="${e.eid == s.eid}">
-                                    <td>${s.thuclinh}</td>
+                                    <td><fmt:formatNumber type="number" maxFractionDigits="0" value="${s.tongthunhap}"/></td>
+                                </c:if>
+                            </c:forEach>
+                            <td><fmt:formatNumber type="number" maxFractionDigits="0" value="${p.insurance}"/></td>
+                            <c:forEach items="${requestScope.salary}" var="s">
+                                <c:if test="${e.eid == s.eid}">
+                                    <td><fmt:formatNumber type="number" maxFractionDigits="0" value="${s.thuclinh}"/></td>
                                 </c:if>
                             </c:forEach>
                             <td>${e.ename}</td>
                         </c:if>
                     </c:forEach>
-                    </tr>
-                </c:forEach>
-           
-  
-                    </table>
+                </tr>
+            </c:forEach>
+
+
+        </table>
 
         <div class="function">
             <div class="button--area">

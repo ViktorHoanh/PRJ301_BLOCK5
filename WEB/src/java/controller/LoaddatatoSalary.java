@@ -139,11 +139,10 @@ public class LoaddatatoSalary extends HttpServlet {
             double tongthu = 0;
             double thucthu = 0;
             for (Position pos : position) {
-                 if(pos.getPid() == eid.getPid()){
+                 if(pos.getPid().equals(eid.getPid())){
                     tongthu = pos.getBasesalary();
-                      for (Working wor : work) {
-                              wor.setEid(eid.getEid());
-                              thucthu = tongthu;
+                      for (Working wor : work) {                       
+                          thucthu = tongthu;
                           Salary s = new Salary();
                           s.setEid(eid.getEid());
                     if (eid.getEid() == s.getEid()) {
@@ -156,14 +155,15 @@ public class LoaddatatoSalary extends HttpServlet {
             }
            sala.setTongthunhap(tongthu);
            sala.setThuclinh(thucthu);  
+           salary.add(sala);
         }
+//        request.setAttribute("salary", salary);
+//                PrintWriter out = response.getWriter();
+//           for(Salary s: salary){
+//            out.println(s);
+//        }
         request.setAttribute("salary", salary);
-                PrintWriter out = response.getWriter();
-           for(Salary s: salary){
-            out.println(s);
-        }
-        request.setAttribute("salary", salary);
-//        request.getRequestDispatcher("Salary.jsp").forward(request, response);
+        request.getRequestDispatcher("Salary.jsp").forward(request, response);
     }
 
     /**

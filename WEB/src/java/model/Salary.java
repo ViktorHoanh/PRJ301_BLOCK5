@@ -10,20 +10,21 @@ package model;
  */
 public class Salary {
     private int eid;
+    private int pid;
     private double tongthunhap;
     private double thuclinh;
 
     public Salary() {
     }
 
-    public Salary(int eid, double tongthunhap, double thuclinh) {
+    public Salary(int eid, int pid, double tongthunhap, double thuclinh) {
         this.eid = eid;
+        this.pid = pid;
         this.tongthunhap = tongthunhap;
         this.thuclinh = thuclinh;
     }
 
     
-
     public double getTongthunhap() {
         return tongthunhap;
     }
@@ -48,10 +49,19 @@ public class Salary {
         this.eid = eid;
     }
 
+    public int getPid() {
+        return pid;
+    }
+
+    public void setPid(int pid) {
+        this.pid = pid;
+    }
+
     @Override
     public String toString() {
-        return "Salary{" + "eid=" + eid + ", tongthunhap=" + tongthunhap + ", thuclinh=" + thuclinh + '}';
+        return "Salary{" + "eid=" + eid + ", pid=" + pid + ", tongthunhap=" + tongthunhap + ", thuclinh=" + thuclinh + '}';
     }
+
     
     
     
