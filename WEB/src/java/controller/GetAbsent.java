@@ -60,7 +60,7 @@ public class GetAbsent extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        response.sendRedirect("AbsentStatus.jsp");
+              processRequest(request, response);
     } 
 
     /** 
@@ -73,6 +73,7 @@ public class GetAbsent extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
+
         EmployeeDB db = new EmployeeDB();
         ArrayList<Employee> employees = db.getAllEmployee(); 
         request.setAttribute("employees", employees);

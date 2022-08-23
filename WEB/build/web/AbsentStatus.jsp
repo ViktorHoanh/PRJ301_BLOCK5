@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -191,7 +192,13 @@
                     <tr class="data">                       
                             <td>${e.eid}</td>
                             <td>${e.ename}</td>
-            </tr>
+                            <c:forEach items="${requestScope.absents}" var="a">
+                                <td>${a.fromdate}</td>
+                                <td>${a.todate}</td>
+                                <td>${a.reason}</td>
+                                <td>${a.isCheck}</td>
+                            </c:forEach>
+                    </tr>
             </c:forEach>
             
             
