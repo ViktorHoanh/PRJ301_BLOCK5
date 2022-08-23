@@ -126,7 +126,7 @@ public class LoaddatatoSalary extends HttpServlet {
 //            out.println(w);
 //        }
         HttpSession session1 = request.getSession();
-        session1.setAttribute("woking", work);
+        session1.setAttribute("working", work);
         request.getRequestDispatcher("Salary.jsp").forward(request, response);
     }
 

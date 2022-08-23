@@ -220,7 +220,7 @@
                         </td>
                     </c:forEach>
                     <c:forEach items="${requestScope.working}" var="w">
-                        <c:if test="${e.getEid() == w.eid}">
+                        <c:if test="${e.eid == w.eid}">
                             <td>${w.ngaycong}</td>
                             <td>${w.congchunhat}</td>
                             <td>${w.huongluong100}</td>

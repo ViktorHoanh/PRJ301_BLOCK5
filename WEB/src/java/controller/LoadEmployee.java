@@ -137,7 +137,7 @@ public class LoadEmployee extends HttpServlet {
 //            out.println(w);
 //        }
 //        HttpSession session1 = request.getSession();
-        request.setAttribute("woking", work);
+        request.setAttribute("working", work);
         YearMonth yearMonthObject = YearMonth.of(year, month);
         int daysInMonth = yearMonthObject.lengthOfMonth();
         request.setAttribute("daymonth", daysInMonth);
