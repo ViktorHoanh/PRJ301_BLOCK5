@@ -73,7 +73,6 @@ public class GetAbsent extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-
         EmployeeDB db = new EmployeeDB();
         ArrayList<Employee> employees = db.getAllEmployee(); 
         request.setAttribute("employees", employees);

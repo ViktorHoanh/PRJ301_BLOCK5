@@ -152,7 +152,7 @@
         </style>
         <jsp:useBean id="dt" class="helper.DateTimeHelper"/>
 
-        <h3>Công ty TNHH MTV</h3>
+        <h3>Công ty TNHH MTV Chinh Thao</h3>
 
         <h1>Bảng chấm công</h1>
 

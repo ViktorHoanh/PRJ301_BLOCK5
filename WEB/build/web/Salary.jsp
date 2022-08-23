@@ -161,7 +161,7 @@
             }
         </style>
 
-        <h3>Công ty TNHH MTV</h3>
+        <h3>Công ty TNHH MTV Chinh Thao</h3>
 
         <h1>Bảng tính lương</h1>
 
@@ -200,7 +200,7 @@
                     <c:forEach items="${requestScope.positions}" var="p">
                         <c:if test="${p.pid eq e.pid}">
                             <td>${p.pname}</td>
-                            <td>${p.basesalary}</td>
+                            <td><fmt:formatNumber type="number" maxFractionDigits="0" value="${p.basesalary}"/></td>
                             <c:forEach items="${requestScope.working}" var="w">
                                 <c:if test="${e.eid == w.eid}">
                                     <td>${w.ngaycong}</td>

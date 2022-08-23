@@ -176,7 +176,7 @@
                 background-color: #edeef1;
             }
         </style>
-        <h3>Công ty TNHH MTV</h3>
+        <h3>Công ty TNHH MTV Chinh Thao</h3>
 
         <h1>Bảng chấm nghỉ</h1>
         <table class="table">

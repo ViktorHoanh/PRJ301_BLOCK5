@@ -146,11 +146,15 @@ public class LoaddatatoSalary extends HttpServlet {
                           Salary s = new Salary();
                           s.setEid(eid.getEid());
                     if (eid.getEid() == s.getEid()) {
-                        tongthu = tongthu * wor.getTongcong()/ 24 + pos.getAllowancesalary();
-                        thucthu = thucthu - pos.getInsurance();
+                        tongthu = tongthu * wor.getTongcong()/26 + pos.getAllowancesalary();
+                        break;
                     }
+                         thucthu = thucthu - pos.getInsurance();
+                        break;
                 }
+  
                  }
+                 
                 
             }
            sala.setTongthunhap(tongthu);
