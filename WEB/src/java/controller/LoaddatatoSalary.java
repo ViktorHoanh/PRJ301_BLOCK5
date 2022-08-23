@@ -21,6 +21,7 @@ import java.util.List;
 import model.Employee;
 import model.Position;
 import model.Timesheet;
+import model.Working;
 
 /**
  *
@@ -81,12 +82,51 @@ public class LoaddatatoSalary extends HttpServlet {
         String[] list = m.split("-");
         int year = Integer.parseInt(list[0]);
         int month = Integer.parseInt(list[1]);
+        TimeSheet ts = new TimeSheet();
+        List<Timesheet> timesheet = ts.getTimeSheet(month+"");
         PositionDB po = new PositionDB();
         ArrayList<Position> position = po.getAllPosition();
         EmployeeDB db = new EmployeeDB();
         ArrayList<Employee> employees = db.getAllEmployee();        
         request.setAttribute("positions", position);
         request.setAttribute("employees", employees);
+        List<Working> work = new ArrayList<>();
+        for (Employee e: employees) {
+            int count = 0;
+            int count1 = 0;
+            int count2 = 0;
+            int count3 = 0;
+            int count4 = 0;
+            Working working = new Working();
+                 working.setEid(e.getEid());
+            for (Timesheet t: timesheet){
+               if( e.getEid() == t.getEid() && t.getStatus()== 1 ){
+                    count = count+1;
+                }
+               if(e.getEid() == t.getEid() && t.getStatus()== 5){
+                   count1 = count1+1;
+               }
+               if(e.getEid() == t.getEid() && t.getStatus()== 2){
+                   count2 = count2+1;
+               }
+               if(e.getEid() == t.getEid() && t.getStatus()== 3){
+                   count3 = count3+1;
+               }
+            }
+           count4 = count + count1 + count2 + count3/2;
+           working.setNgaycong(count);
+           working.setCongchunhat(count1);
+           working.setHuongluong100(count2);
+           working.setHuongluong50(count3);
+           working.setTongcong(count4);
+           work.add(working);
+        }
+//                PrintWriter out = response.getWriter();
+//        for(Working w: work){
+//            out.println(w);
+//        }
+        HttpSession session1 = request.getSession();
+        session1.setAttribute("woking", work);
         request.getRequestDispatcher("Salary.jsp").forward(request, response);
     }
 

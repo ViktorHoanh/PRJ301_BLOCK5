@@ -21,6 +21,7 @@ import java.util.Date;
 import java.util.List;
 import model.Employee;
 import model.Timesheet;
+import model.Working;
 
 /**
  *
@@ -95,17 +96,53 @@ public class LoadEmployee extends HttpServlet {
         TimeSheet ts = new TimeSheet();
         ArrayList<Employee> employees = db.getAllEmployee();
         List<Timesheet> timesheet = ts.getTimeSheet(month+"");
-        HttpSession session = request.getSession();     
-        session.setAttribute("timesheets", timesheet);
+//        HttpSession session = request.getSession();     
+        request.setAttribute("timesheets", timesheet);
         request.setAttribute("employees", employees);
 //        List<Timesheet> timesheets2 = ts.getTimeTotalWorkingById(month+"");
 //        request.setAttribute("time2", timesheets2);
+        List<Working> work = new ArrayList<>();
+        for (Employee e: employees) {
+            int count = 0;
+            int count1 = 0;
+            int count2 = 0;
+            int count3 = 0;
+            int count4 = 0;
+            Working working = new Working();
+                 working.setEid(e.getEid());
+            for (Timesheet t: timesheet){
+               if( e.getEid() == t.getEid() && t.getStatus()== 1 ){
+                    count = count+1;
+                }
+               if(e.getEid() == t.getEid() && t.getStatus()== 5){
+                   count1 = count1+1;
+               }
+               if(e.getEid() == t.getEid() && t.getStatus()== 2){
+                   count2 = count2+1;
+               }
+               if(e.getEid() == t.getEid() && t.getStatus()== 3){
+                   count3 = count3+1;
+               }
+            }
+           count4 = count + count1 + count2 + count3/2;
+           working.setNgaycong(count);
+           working.setCongchunhat(count1);
+           working.setHuongluong100(count2);
+           working.setHuongluong50(count3);
+           working.setTongcong(count4);
+           work.add(working);
+        }
+//        PrintWriter out = response.getWriter();
+//        for(Working w: work){
+//            out.println(w);
+//        }
+//        HttpSession session1 = request.getSession();
+        request.setAttribute("woking", work);
         YearMonth yearMonthObject = YearMonth.of(year, month);
-         int daysInMonth = yearMonthObject.lengthOfMonth();
-         request.setAttribute("daymonth", daysInMonth);
+        int daysInMonth = yearMonthObject.lengthOfMonth();
+        request.setAttribute("daymonth", daysInMonth);
         request.getRequestDispatcher("Home.jsp").forward(request, response);
     }
-
     /**
      * Returns a short description of the servlet.
      *

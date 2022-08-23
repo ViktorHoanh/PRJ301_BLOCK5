@@ -201,11 +201,15 @@
                         <c:if test="${p.pid eq e.pid}">
                             <td>${p.pname}</td>
                             <td>${p.basesalary}</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <c:forEach items="${requestScope.working}" var="w">
+                        <c:if test="${e.getEid() == w.eid}">
+                            <td>${w.ngaycong}</td>
+                            <td>${w.congchunhat}</td>
+                            <td>${w.huongluong100}</td>
+                            <td>${w.huongluong50}</td>
+                            <td>${w.tongcong}</td>
+                        </c:if>
+                    </c:forEach>
                             <td>${p.allowancesalary}</td>
                             <td></td>
                             <td>${p.insurance}</td>

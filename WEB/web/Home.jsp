@@ -146,7 +146,7 @@
                 font-size: 16px;
                 cursor: pointer;
                 height: 40px;
-                
+
 
             }
         </style>
@@ -212,20 +212,23 @@
                                 style="background-color: #f2f2c0;"
                             </c:if>
                             >
-                           <c:forEach items="${sessionScope.timesheets}" var="t">
-                               <c:if test="${dt.getDayOfMonth(dt.addDays(t.date, 0)) eq dt.getDayOfMonth(d) && e.eid eq t.eid}">
-                                   ${t.status}
-                               </c:if>                            
+                            <c:forEach items="${requestScope.timesheets}" var="t">
+                                <c:if test="${dt.getDayOfMonth(dt.addDays(t.date, 0)) eq dt.getDayOfMonth(d) && e.eid eq t.eid}">
+                                    ${t.status}
+                                </c:if>                            
                             </c:forEach>                          
                         </td>
                     </c:forEach>
-<!--                        <td>${requestScope.time2.status}</td>-->
-                        <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                 
+                    <c:forEach items="${requestScope.working}" var="w">
+                        <c:if test="${e.getEid() == w.eid}">
+                            <td>${w.ngaycong}</td>
+                            <td>${w.congchunhat}</td>
+                            <td>${w.huongluong100}</td>
+                            <td>${w.huongluong50}</td>
+                            <td>${w.tongcong}</td>
+                        </c:if>
+                    </c:forEach>
+
                 </tr>
             </c:forEach>
 
@@ -236,47 +239,48 @@
             <div id="kyhieu">
                 <h2>Ký Hiệu Chấm Công</h2>
                 <table class="table">
-                    <tr style="background-color: #f2f2c0">
-                        <th>Ngày nghỉ</th>
-                            <th style="font-size: 150%">   0 </th>
-                        </tr>
+
                     <tr>
-                            <th>Đi Làm</th>
-                            <th style="font-size: 150%">  1  </th>
-                        </tr>
-                        <tr style="background-color: #f2f2c0">
-                            <th>Nghỉ hưởng lương 100%</th>
-                            <th style="font-size: 150%">          2            </th>
-                        </tr>
-                        <tr >
-                            <th>Nghỉ hưởng lương 50%</th>
-                            <th style="font-size: 150%">3</th>
-                        </tr>
-                        <tr style="background-color: #f2f2c0">
-                            <th>Không đi làm</th>
-                            <th style="font-size: 150%">4</th>
-                        </tr>
+                        <th>Đi Làm</th>
+                        <th style="font-size: 150%">  1  </th>
+                    </tr>
+                    <tr style="background-color: #f2f2c0">
+                        <th>Nghỉ hưởng lương 100%</th>
+                        <th style="font-size: 150%">          2            </th>
+                    </tr>
+                    <tr >
+                        <th>Nghỉ hưởng lương 50%</th>
+                        <th style="font-size: 150%">3</th>
+                    </tr>
+                    <tr style="background-color: #f2f2c0">
+                        <th>Không đi làm</th>
+                        <th style="font-size: 150%">4</th>
+                    </tr>
+                    <tr>
+                        <td>Làm thêm chủ nhật</td>
+                        <th style="font-size: 150%"> 5 </th>
+                    </tr>
                 </table>
             </div>
         </div>
 
-            <div class="function">
-                <div class="button--area">
-                    <a href="loadsalary" class="button">Đến trang tính lương</a>
-                    <a href="AbsentStatus.jsp" class="button">Đến trang chấm nghỉ</a>
-                </div>
-                <form class="signature--area">
-                    <div class="signature--form">
-                        <div class="signature--input">
-                            <label for="">Người chấm công</label>
-                            <input type="text" placeholder="(Ký họ tên)" />
-                        </div>
-                        <div class="signature--input">
-                            <label for="">Giám đốc</label>
-                            <input type="text" placeholder="(Ký họ tên)" />
-                        </div>
-                    </div>
-                </form>
+        <div class="function">
+            <div class="button--area">
+                <a href="loadsalary" class="button">Đến trang tính lương</a>
+                <a href="AbsentStatus.jsp" class="button">Đến trang chấm nghỉ</a>
             </div>
+            <form class="signature--area">
+                <div class="signature--form">
+                    <div class="signature--input">
+                        <label for="">Người chấm công</label>
+                        <input type="text" placeholder="(Ký họ tên)" />
+                    </div>
+                    <div class="signature--input">
+                        <label for="">Giám đốc</label>
+                        <input type="text" placeholder="(Ký họ tên)" />
+                    </div>
+                </div>
+            </form>
+        </div>
     </body>
 </html>
